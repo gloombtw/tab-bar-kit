@@ -28,8 +28,8 @@ protocol TabBarController: UITabBarController {
     var tabBarViewController: UIViewController? { get }
     
     /// Performs setup for the tab bar view
-    func setTabBarView(tabBarView: TabBarView)
+    func setTabBarView(_ tabBarView: TabBarView)
     
     /// Perfroms setup for the tab bar items
-    func setTabBarItems(tabBarItems: [TabItem])
+    func setTabBarItems(_ tabBarItems: [TabItem])
 }
