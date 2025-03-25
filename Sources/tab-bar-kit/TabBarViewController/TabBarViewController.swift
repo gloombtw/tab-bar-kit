@@ -11,7 +11,7 @@ import UIKit
 import SwiftUI
 
 /// A `UITabBarController` that hosts `SwiftUI` views for the tab bar and tab bar items
-final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, TabBarController where T.CoordinatorValue == Int {
+public final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, TabBarController where T.CoordinatorValue == Int {
 
     /// The coordinator that handles the index changing events between the `SwiftUI` view  and the tab bar controller
     internal let coordinator: T
@@ -34,7 +34,7 @@ final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, Tab
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         guard let tabBarController = tabBarViewController, let childView = tabBarController.view else {
