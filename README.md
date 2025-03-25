@@ -99,5 +99,5 @@ SOFTWARE.
 
 ## Contact
 
-Your Name - [dustintdwp@gmail.com](mailto\:dustintdwp@gmail.com)\
+Dustin Sapp - [dustintdwp@gmail.com](mailto\:dustintdwp@gmail.com)\
 GitHub: [gloombtw](https://github.com/gloombtw)
