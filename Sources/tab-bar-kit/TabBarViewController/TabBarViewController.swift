@@ -17,9 +17,9 @@ final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, Tab
     public let coordinator: T
 
     /// The view controller for the tab bar
-    public private(set) var tabBarViewController: UIViewController? = nil
+    internal var tabBarViewController: UIViewController? = nil
     
-    private var bag: [AnyCancellable] = []
+    internal var bag: [AnyCancellable] = []
     
     /// Creates a `TabBarViewController` instance from the specified parameters
     ///
@@ -55,7 +55,7 @@ final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, Tab
     ///
     ///  - Parameters:
     ///     - tabBarView: The `SwiftUI` view to represent the tab bar expressed as `AnyView`
-    public func setTabBarView(tabBarView: AnyView) {
+    public func setTabBarView(_ tabBarView: AnyView) {
         self.tabBarViewController = UIHostingController(rootView: tabBarView)
     }
     
@@ -63,7 +63,7 @@ final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, Tab
     ///
     ///  - Parameters:
     ///     - tabBarItems:
-    public func setTabBarItems(tabBarItems: [TabBarItem]) {
+    public func setTabBarItems(_ tabBarItems: [TabBarItem]) {
         viewControllers = tabBarItems.map {
             if $0.isNavigationRoot {
                 return UINavigationController(rootViewController: UIHostingController(rootView: $0.tabRootView))
@@ -73,6 +73,7 @@ final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, Tab
     }
 
     // - MARK: Private Functions
+
     private func setupConstraints(for view: UIView) {
         let constraints = [
             view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),

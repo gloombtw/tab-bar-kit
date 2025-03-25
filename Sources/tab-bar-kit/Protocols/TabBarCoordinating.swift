@@ -18,7 +18,7 @@ public protocol TabBarCoordinating: ObservableObject {
     
     /// Sends the value to the coordinator for processing
     ///
-    ///  - ParameterS:
+    ///  - Parameters:
     ///     - value: The value being sent by the publisher. `UITabBarController` expects an integer based index to navigate between tabs,
     ///              but a custom wrapper type may be used.
     func send(value: CoordinatorValue)

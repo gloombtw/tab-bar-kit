@@ -1,7 +1,6 @@
 # tab-bar-kit
-# Project Title
 
-A brief description of your project.
+SwiftUI tab bar for hybrid projects.
 
 ## Table of Contents
 
@@ -16,15 +15,7 @@ A brief description of your project.
 
 ## About the Project
 
-Provide a detailed explanation of what the project does, its purpose, and why it was created.
-
-## Features
-
-- List key features and functionalities.
-- Example:
-  - User authentication
-  - Responsive design
-  - API integration
+Use SwiftUI Views for your UIKit tab bar and tab items
 
 ## Installation
 
@@ -32,21 +23,26 @@ Provide a detailed explanation of what the project does, its purpose, and why it
    ```bash
    git clone https://github.com/yourusername/your-repo.git
    ```
-2. Navigate to the project directory:
-   ```bash
-   cd your-repo
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
 
 ## Usage
 
-Provide instructions and examples on how to use your project. You can include code snippets if necessary.
+Create an instance of the coordinator and tab bar controller
+```swift
+let coordinator = TabBarCoordinator()
+let tabBarController = TaBarViewController(coordinator: coordinator)
+```
+Add the coordinator to your SwiftUI tab bar view. The tab bar conforms to ObservableObject so it can be injected as an EnvironmentObject 
 
-```bash
-npm start
+Add your SwiftUI tab bar view wrapped in AnyView:
+```swift
+tabBarController.setTabBarView(AnyView(Color.red))
+```
+
+Create you tab bar items and add them to the tab bar controller:
+```swift
+let tabBarItems = [TabBarItem(index: 0, tabRootView: AnyView(Color.red), isNavigationRoot: false)]
+
+tabBarController.setTabBarItems(tabBarItems)
 ```
 
 ## Testing
@@ -103,5 +99,5 @@ SOFTWARE.
 
 ## Contact
 
-Your Name - [Your Email](mailto\:your-email@example.com)\
-GitHub: [YourUsername](https://github.com/YourUsername)
+Your Name - [dustintdwp@gmail.com](mailto\:dustintdwp@gmail.com)\
+GitHub: [gloombtw](https://github.com/gloombtw)

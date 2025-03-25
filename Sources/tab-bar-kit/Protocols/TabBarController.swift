@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 /// Definition of a custom `UIKit` to `SwiftUI` TabBar
-public protocol TabBarController: UITabBarController {
+protocol TabBarController: UITabBarController {
     
     /// The type of coodinator conforming to the `TabBarCoordinating` protocol.
     associatedtype Coordinator: TabBarCoordinating
