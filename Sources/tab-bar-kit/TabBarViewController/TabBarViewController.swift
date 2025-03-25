@@ -14,7 +14,7 @@ import SwiftUI
 final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, TabBarController where T.CoordinatorValue == Int {
 
     /// The coordinator that handles the index changing events between the `SwiftUI` view  and the tab bar controller
-    public let coordinator: T
+    internal let coordinator: T
 
     /// The view controller for the tab bar
     internal var tabBarViewController: UIViewController? = nil
