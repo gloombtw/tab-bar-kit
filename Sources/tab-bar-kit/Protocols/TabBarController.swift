@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TabBarController.swift
 //  tab-bar-kit
 //
 //  Created by Dustin Sapp on 3/15/25.

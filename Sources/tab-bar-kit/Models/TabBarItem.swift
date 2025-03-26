@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TabBarItem.swift
 //  tab-bar-kit
 //
 //  Created by Dustin Sapp on 3/15/25.
@@ -22,4 +22,16 @@ public struct TabBarItem: TabBarItemProtocol {
     
     /// Denotes if the `UIHostingcontroller` needs to be backed by a `UINavigationController`
     public let isNavigationRoot: Bool
+    
+    /// Creates a `TabBarItem` instance from the following parameters:
+    ///
+    /// - Parameters:
+    ///     - index: zero based index for the tab bar item.
+    ///     - tabRootView: `SwiftUI` view that will be the root wrapped in `AnyView`
+    ///     - isNavigationRoot: denotes if the `UIHostingController` will be wrapped in a `UINavigationController`
+    public init(index: Int, tabRootView: AnyView, isNavigationRoot: Bool) {
+        self.index = index
+        self.tabRootView = tabRootView
+        self.isNavigationRoot = isNavigationRoot
+    }
 }
