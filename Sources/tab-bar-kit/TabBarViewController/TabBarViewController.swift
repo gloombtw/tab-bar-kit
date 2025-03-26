@@ -11,22 +11,26 @@ import UIKit
 import SwiftUI
 
 /// A `UITabBarController` that hosts `SwiftUI` views for the tab bar and tab bar items
-public final class TabBarViewController<T: TabBarCoordinating>: UITabBarController, TabBarController where T.CoordinatorValue == Int {
+public final class TabBarViewController<T: TabBarCoordinating, I: TabBarItemProtocol>: UITabBarController, TabBarController where T.CoordinatorValue == Int {
 
     /// The coordinator that handles the index changing events between the `SwiftUI` view  and the tab bar controller
     internal let coordinator: T
 
     /// The view controller for the tab bar
-    internal var tabBarViewController: UIViewController? = nil
+    internal var tabBarViewController: UIViewController
     
     internal var bag: [AnyCancellable] = []
+    
+    internal let tabBarItems: [I]
     
     /// Creates a `TabBarViewController` instance from the specified parameters
     ///
     ///  - Parameters:
     ///     - coordinator: The coordinator that handles the index changing events between the `SwiftUI` view  and the tab bar controller
-    public init(coordinator: T) {
+    public init(coordinator: T, tabBarView: AnyView, tabBarItems: [I]) {
         self.coordinator = coordinator
+        self.tabBarViewController = UIHostingController(rootView: tabBarView)
+        self.tabBarItems = tabBarItems
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,33 +41,22 @@ public final class TabBarViewController<T: TabBarCoordinating>: UITabBarControll
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let tabBarController = tabBarViewController, let childView = tabBarController.view else {
+        guard let childView = tabBarViewController.view else {
             return
         }
 
         tabBar.isHidden = true
         childView.backgroundColor = .clear
         childView.translatesAutoresizingMaskIntoConstraints = false
-        addChild(tabBarController)
-        tabBarController.didMove(toParent: self)
+        addChild(tabBarViewController)
+        tabBarViewController.didMove(toParent: self)
         view.addSubview(childView)
         setupConstraints(for: childView)
         subscribeToCoordinator()
+        setupTabBarItems()
     }
 
-    /// Sets the view for the tab bar
-    ///
-    ///  - Parameters:
-    ///     - tabBarView: The `SwiftUI` view to represent the tab bar expressed as `AnyView`
-    public func setTabBarView(_ tabBarView: AnyView) {
-        self.tabBarViewController = UIHostingController(rootView: tabBarView)
-    }
-    
-    /// Sets the tab bar items for the tab bar
-    ///
-    ///  - Parameters:
-    ///     - tabBarItems:
-    public func setTabBarItems(_ tabBarItems: [TabBarItem]) {
+    private func setupTabBarItems() {
         viewControllers = tabBarItems.map {
             if $0.isNavigationRoot {
                 return UINavigationController(rootViewController: UIHostingController(rootView: $0.tabRootView))

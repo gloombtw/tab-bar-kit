@@ -18,18 +18,11 @@ protocol TabBarController: UITabBarController {
     /// The type of tab bar item conforming to `TabBarItemProtocol`
     associatedtype TabItem: TabBarItemProtocol
     
-    /// The type of tab bar view conforming to `SwiftUI.View`
-    associatedtype TabBarView: View
-    
     /// The coordinator that will notify the `TabBarController` that a tab item has been selected.
     var coordinator: Coordinator { get }
     
+    var tabBarItems: [TabItem] { get }
+    
     /// The view controller that will host the `SwiftUI.View` for the tab bar.
-    var tabBarViewController: UIViewController? { get }
-    
-    /// Performs setup for the tab bar view
-    func setTabBarView(_ tabBarView: TabBarView)
-    
-    /// Perfroms setup for the tab bar items
-    func setTabBarItems(_ tabBarItems: [TabItem])
+    var tabBarViewController: UIViewController { get }
 }
