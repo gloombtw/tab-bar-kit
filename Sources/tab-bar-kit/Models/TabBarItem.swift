@@ -23,12 +23,16 @@ public struct TabBarItem: TabBarItemProtocol {
     /// Denotes if the `UIHostingcontroller` needs to be backed by a `UINavigationController`
     public let isNavigationRoot: Bool
     
+    /// The icon used for the tab bar
+    public let image: Image
+    
     /// Creates a `TabBarItem` instance from the following parameters:
     ///
     /// - Parameters:
     ///     - index: zero based index for the tab bar item.
     ///     - tabRootView: `SwiftUI` view that will be the root wrapped in `AnyView`
-    ///     - isNavigationRoot: denotes if the `UIHostingController` will be wrapped in a `UINavigationController`
+    ///     - isNavigationRoot: Denotes if the `UIHostingController` will be wrapped in a `UINavigationController`
+    ///     - image: The icon used for the tab bar
     public init(index: Int, tabRootView: AnyView, isNavigationRoot: Bool) {
         self.index = index
         self.tabRootView = tabRootView

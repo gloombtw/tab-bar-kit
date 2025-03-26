@@ -27,6 +27,8 @@ public final class TabBarViewController<T: TabBarCoordinating, I: TabBarItemProt
     ///
     ///  - Parameters:
     ///     - coordinator: The coordinator that handles the index changing events between the `SwiftUI` view  and the tab bar controller
+    ///     - tabBarView: The `SwiftUI` view for the tab bar
+    ///     - tabBarItems: The items for the tab bar
     public init(coordinator: T, tabBarView: AnyView, tabBarItems: [I]) {
         self.coordinator = coordinator
         self.tabBarViewController = UIHostingController(rootView: tabBarView)

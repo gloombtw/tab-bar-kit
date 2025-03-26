@@ -21,6 +21,7 @@ protocol TabBarController: UITabBarController {
     /// The coordinator that will notify the `TabBarController` that a tab item has been selected.
     var coordinator: Coordinator { get }
     
+    /// The tab bar items of the tab bar
     var tabBarItems: [TabItem] { get }
     
     /// The view controller that will host the `SwiftUI.View` for the tab bar.
