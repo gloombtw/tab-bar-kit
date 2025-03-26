@@ -33,9 +33,10 @@ public struct TabBarItem: TabBarItemProtocol {
     ///     - tabRootView: `SwiftUI` view that will be the root wrapped in `AnyView`
     ///     - isNavigationRoot: Denotes if the `UIHostingController` will be wrapped in a `UINavigationController`
     ///     - image: The icon used for the tab bar
-    public init(index: Int, tabRootView: AnyView, isNavigationRoot: Bool) {
+    public init(index: Int, tabRootView: AnyView, isNavigationRoot: Bool, image: Image) {
         self.index = index
         self.tabRootView = tabRootView
         self.isNavigationRoot = isNavigationRoot
+        self.image = image
     }
 }
